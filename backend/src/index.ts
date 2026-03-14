@@ -23,10 +23,10 @@ if (process.env.NODE_ENV !== "production") {
   server = http.createServer(app);
 } else {
   console.log("production mode - using HTTPS");
-  const options = {
-    key: fs.readFileSync("../client-key.pem"),
-    cert: fs.readFileSync("../client-cert.pem"),
-  };
+const options = {
+  key: fs.readFileSync(path.join(__dirname, "../client-key.pem")),
+  cert: fs.readFileSync(path.join(__dirname, "../client-cert.pem")),
+};
   server = https.createServer(options, app);
 }
 

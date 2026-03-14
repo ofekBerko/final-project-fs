@@ -6,8 +6,11 @@ import cors from "cors";
 import mongoose from "mongoose";
 import userRoutes from "./routes/userRoute";
 import authRoutes from "./routes/authRoute";
+import postRoutes from "./routes/postRoute";
+import commentRoutes from "./routes/commentRoute";
 import swaggerJsDoc from "swagger-jsdoc";
 import swaggerUI from "swagger-ui-express";
+import contentRoute from "./routes/contentRoute";
 
 const app = express();
 let server: http.Server;
@@ -37,6 +40,11 @@ mongoose
 
 app.use("/api/users", userRoutes);
 app.use("/api/auth", authRoutes);
+app.use("/api/posts", postRoutes);
+app.use("/api/comments", commentRoutes);
+app.use("/api/content", contentRoute);
+app.use("/api/media/", express.static("media"));
+
 
 const options = {
   definition: {

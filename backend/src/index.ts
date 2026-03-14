@@ -11,6 +11,9 @@ import commentRoutes from "./routes/commentRoute";
 import swaggerJsDoc from "swagger-jsdoc";
 import swaggerUI from "swagger-ui-express";
 import contentRoute from "./routes/contentRoute";
+import https from "https";
+import fs from "fs";
+import path from "path";
 
 const app = express();
 let server: http.Server;
@@ -18,7 +21,11 @@ let server: http.Server;
 if (process.env.NODE_ENV !== "production") {
   server = http.createServer(app);
 } else {
-  server = http.createServer(app);
+  const options = {
+    key: fs.readFileSync("../client-key.pem"),
+    cert: fs.readFileSync("../client-cert.pem"),
+  };
+  server = https.createServer(options, app);
 }
 
 app.use(express.json());
@@ -44,7 +51,6 @@ app.use("/api/posts", postRoutes);
 app.use("/api/comments", commentRoutes);
 app.use("/api/content", contentRoute);
 app.use("/api/media/", express.static("media"));
-
 
 const options = {
   definition: {
@@ -77,6 +83,12 @@ const options = {
 };
 const specs = swaggerJsDoc(options);
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs));
+
+app.use(express.static("frontend"));
+
+app.get("*", (_req, res) => {
+  res.sendFile(path.resolve(__dirname, "../frontend", "index.html"));
+});
 
 server.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

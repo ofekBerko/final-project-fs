@@ -77,7 +77,7 @@ const options = {
         ],
         servers: [
             { url: "http://localhost:3000/api" },
-            { url: "https://node105.cs.colman.ac.il/api" },
+            { url: "https://node23.cs.colman.ac.il/api" },
         ],
     },
     apis: ["./src/routes/*.ts", "./src/swaggerDef.ts"],

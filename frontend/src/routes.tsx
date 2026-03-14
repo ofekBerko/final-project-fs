@@ -14,6 +14,7 @@ import { useEffect } from "react";
 import Profile from "@/pages/Profile";
 import Register from "@/pages/Register";
 import Post from "@/pages/Post";
+import Comments from "./pages/Comments";
 
 const ProtectedLayout = () => {
   const { user } = useUser();
@@ -79,6 +80,12 @@ const postRoute = createRoute({
   component: Post,
 });
 
+const commentsRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/comments/$postId",
+  component: Comments,
+});
+
 const notFoundRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "*",
@@ -93,6 +100,7 @@ const routeTree = rootRoute.addChildren([
   notFoundRoute,
   defaultProfileRoute,
   postRoute,
+  commentsRoute,
   defaultPostRoute,
 ]);
 

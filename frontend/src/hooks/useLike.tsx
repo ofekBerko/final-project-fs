@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Post } from "@/types";
-import { usePosts } from "../hooks/usePosts";
+import { usePosts } from "@/hooks/usePosts";
 import { useState } from "react";
 import api from "@/axios/axios";
 import { API_ROUTES } from "@/axios/apiRoutes";

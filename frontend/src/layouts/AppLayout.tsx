@@ -14,7 +14,7 @@ import {
   MenuItem,
 } from "@mui/material";
 import { ArrowLeft, CirclePlus, Home, LogIn } from "lucide-react";
-import { useUser } from "../hooks/useUser";
+import { useUser } from "@/hooks/useUser";
 import { useState } from "react";
 
 const AppLayout = () => {
@@ -29,7 +29,7 @@ const AppLayout = () => {
     <div
       style={{
         display: "flex",
-        flexDirection: "column" as const,
+        flexDirection: "column",
         height: "100vh",
         width: "100vw",
       }}
@@ -102,7 +102,7 @@ const AppLayout = () => {
                   src={user.image}
                   alt={user.username}
                   sx={{ width: 40, height: 40, marginRight: 2 }}
-                  onClick={(e: React.ChangeEvent<HTMLInputElement>) => setMenuAnchor(e.currentTarget)}
+                  onClick={(e) => setMenuAnchor(e.currentTarget)}
                   style={{ cursor: "pointer" }}
                 />
                 <Menu

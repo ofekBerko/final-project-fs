@@ -24,9 +24,11 @@ const app = (0, express_1.default)();
 let server;
 exports.server = server;
 if (process.env.NODE_ENV !== "production") {
+    console.log("development mode - using HTTP");
     exports.server = server = http_1.default.createServer(app);
 }
 else {
+    console.log("production mode - using HTTPS");
     const options = {
         key: fs_1.default.readFileSync("../client-key.pem"),
         cert: fs_1.default.readFileSync("../client-cert.pem"),

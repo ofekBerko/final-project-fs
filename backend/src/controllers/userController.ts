@@ -57,7 +57,7 @@ export const createUser = async (req: Request, res: Response) => {
   }
 };
 
-export const getUser = async (req: Request, res: Response) => {
+export const getUser = async (req: any, res: Response) => {
   try {
     const user = await userDao.getUserById(req.params.userId);
     if (user) {
@@ -80,7 +80,12 @@ export const updateUser = async (req: Request, res: Response) => {
       ? `${BASE_URL}/media/${req.file.filename}`
       : req.body.image;
 
-    const updatedUser = await userDao.updateUserById(req.params.currentUserId, {
+    const currentUserId =
+      Array.isArray(req.params.currentUserId)
+        ? req.params.currentUserId[0]
+        : req.params.currentUserId;
+
+    const updatedUser = await userDao.updateUserById(currentUserId, {
       ...req.body,
       image,
     });

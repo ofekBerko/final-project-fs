@@ -6,8 +6,10 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "outDir": "./dist"
+    "outDir": "./dist",
+    "rootDir": "./src" 
   },
   "lib": ["es2015"],
+  "include": ["./src/**/*"],
   "exclude": ["./src/tests"]
 }

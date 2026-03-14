@@ -14,6 +14,7 @@ import { useNavigate } from "@tanstack/react-router";
 import { useLike } from "@/hooks/useLike";
 import { useEffect } from "react";
 import { useUser } from "@/hooks/useUser";
+import { useComments } from "@/hooks/useComments";
 
 const PostCard = ({
   post,
@@ -25,6 +26,7 @@ const PostCard = ({
   const { user } = useUser();
   const navigate = useNavigate();
   const { isLiked, toggleLiked, isUpdating, likedCount } = useLike(post.id);
+  const { comments } = useComments(post.id);
 
   useEffect(() => {
     return () => {
@@ -96,7 +98,7 @@ const PostCard = ({
         >
           <MessageCircle />
         </IconButton>
-        <Typography color="grey">{0}</Typography>
+        <Typography color="grey">{comments.length}</Typography>
       </CardActions>
     </Card>
   );

@@ -1,4 +1,4 @@
-import { User } from "../types";
+import { User } from "@/types";
 import { Avatar } from "@mui/material";
 import { Camera } from "lucide-react";
 import { ChangeEvent } from "react";
@@ -17,7 +17,7 @@ const AvatarUpload: React.FC<IAvatarUploadProps> = ({
   displayOnly = false,
 }) => {
   return (
-    <div style={{ position: "relative" as const, display: "inline-block" }}>
+    <div style={{ position: "relative", display: "inline-block" }}>
       <label
         htmlFor={displayOnly ? "" : "image-upload"}
         style={{ cursor: displayOnly ? "default" : "pointer" }}
@@ -42,7 +42,7 @@ const AvatarUpload: React.FC<IAvatarUploadProps> = ({
         {!displayOnly && (
           <div
             style={{
-              position: "absolute" as const,
+              position: "absolute",
               bottom: 0,
               right: 0,
               background: "rgba(0, 0, 0, 0.7)",

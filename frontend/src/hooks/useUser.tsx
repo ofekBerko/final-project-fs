@@ -1,6 +1,6 @@
 import { useRecoilState } from "recoil";
-import { userAtom } from "../atoms";
-import { User, UserWithToken } from "../types";
+import { userAtom } from "@/atoms";
+import { User, UserWithToken } from "@/types";
 import { useMutation } from "@tanstack/react-query";
 import api from "@/axios/axios";
 import { API_ROUTES } from "@/axios/apiRoutes";

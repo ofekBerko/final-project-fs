@@ -31,5 +31,4 @@ export enum ContentType {
   QUOTE = "Give me a short emotional and inspiring quote.",
   FUN_FACT = "Tell me a short interesting and fun fact.",
   RIDDLE = "Tell me a short and clever riddle.",
-  DAILY_TIP = "Give me a short and practical daily life tip.",
 }

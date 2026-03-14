@@ -1,4 +1,4 @@
-import { useContent } from "../hooks/useContent";
+import { useContent } from "@/hooks/useContent";
 import { usePosts } from "@/hooks/usePosts";
 import { useUser } from "@/hooks/useUser";
 import { ContentType } from "@/types";

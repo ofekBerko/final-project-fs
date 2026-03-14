@@ -6,7 +6,7 @@
     "dev": "ts-node src/index.ts",
     "build": "tsc",
     "start": "node dist/index.js",
-    "prod": "cp .env.prod .env && tsc -p tsconfig_prod.json && pm2 restart ecosystem.config.js --env production",
+    "prod": "cp .env_prod .env && tsc -p tsconfig_prod.json && pm2 restart ecosystem.config.js --env production",
     "test": "jest --detectOpenHandles --runInBand --forceExit"
   },
   "keywords": [],

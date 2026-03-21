@@ -78,5 +78,18 @@ router.post("/", authMiddleware_1.authMiddleware, commentController_1.createComm
  *       500:
  *         description: Server error
  */
+/**
+ * @swagger
+ * /comments/hello:
+ *   get:
+ *     summary: Returns hello world
+ *     tags: [Comments]
+ *     responses:
+ *       200:
+ *         description: Hello world message
+ */
+router.get("/hello", (req, res) => {
+    res.send("hello world");
+});
 router.get("/:postId", authMiddleware_1.authMiddleware, commentController_1.getComments);
 exports.default = router;

@@ -16,8 +16,8 @@ const openai_1 = __importDefault(require("openai"));
 const openai = new openai_1.default({ apiKey: process.env.OPENAI_API_KEY, baseURL: "https://api.groq.com/openai/v1" });
 class ContentDao {
     generateContent(contentType) {
+        var _a, _b;
         return __awaiter(this, void 0, void 0, function* () {
-            var _a, _b;
             try {
                 const response = yield openai.chat.completions.create({
                     model: "llama-3.1-8b-instant",

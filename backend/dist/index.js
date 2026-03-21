@@ -22,6 +22,7 @@ const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
 const app = (0, express_1.default)();
 let server;
+exports.server = server;
 if (process.env.NODE_ENV !== "production") {
     console.log("development mode - using HTTP");
     exports.server = server = http_1.default.createServer(app);
@@ -83,12 +84,10 @@ const options = {
 };
 const specs = (0, swagger_jsdoc_1.default)(options);
 app.use("/api-docs", swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(specs));
-// Serve static files from the frontend build directory
-const frontendPath = path_1.default.join(__dirname, "../../frontend/dist");
-app.use(express_1.default.static(frontendPath));
+app.use(express_1.default.static("frontend"));
 // Fallback to index.html for client-side routing
 app.get("*", (_req, res) => {
-    res.sendFile(path_1.default.join(frontendPath, "index.html"));
+    res.sendFile(path_1.default.resolve(__dirname, "../frontend", "index.html"));
 });
 server.listen(config_1.PORT, () => {
     console.log(`Server is running on port ${config_1.PORT}`);

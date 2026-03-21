@@ -192,7 +192,7 @@ const logoutUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
 });
 exports.logoutUser = logoutUser;
 const refreshToken = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    var _a;
+    var _b;
     const refreshToken = req.cookies.refreshToken;
     if (!refreshToken) {
         return res
@@ -205,7 +205,7 @@ const refreshToken = (req, res) => __awaiter(void 0, void 0, void 0, function* (
         if (!user) {
             return res.status(401).json({ message: "Invalid request" });
         }
-        if (!((_a = user.tokens) === null || _a === void 0 ? void 0 : _a.includes(refreshToken))) {
+        if (!((_b = user.tokens) === null || _b === void 0 ? void 0 : _b.includes(refreshToken))) {
             user.tokens = [""];
             yield user.save();
             return res.status(401).json({ message: "Invalid req" });

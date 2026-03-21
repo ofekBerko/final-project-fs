@@ -67,7 +67,7 @@ describe("User Routes Tests", () => {
     test("Create User with Existing Username", () => __awaiter(void 0, void 0, void 0, function* () {
         const response = yield (0, supertest_1.default)(index_1.server).post("/api/users").send({
             email: "anotheruser@test.com",
-            username: "newuser", // This username already exists from the previous test
+            username: "newuser",
             password: "anotherpassword",
         });
         expect(response.statusCode).toBe(400);
@@ -75,7 +75,7 @@ describe("User Routes Tests", () => {
     }));
     test("Create User with Existing Email", () => __awaiter(void 0, void 0, void 0, function* () {
         const response = yield (0, supertest_1.default)(index_1.server).post("/api/users").send({
-            email: "newuser@test.com", // This email already exists from the previous test
+            email: "newuser@test.com",
             username: "anothernewuser",
             password: "password123",
         });

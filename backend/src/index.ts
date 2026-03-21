@@ -86,13 +86,11 @@ const options = {
 const specs = swaggerJsDoc(options);
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs));
 
-// Serve static files from the frontend build directory
-const frontendPath = path.join(__dirname, "../../frontend/dist");
-app.use(express.static(frontendPath));
+app.use(express.static("frontend"));
 
 // Fallback to index.html for client-side routing
 app.get("*", (_req, res) => {
-  res.sendFile(path.join(frontendPath, "index.html"));
+ res.sendFile(path.resolve(__dirname, "../frontend", "index.html"));
 });
 
 server.listen(PORT, () => {
